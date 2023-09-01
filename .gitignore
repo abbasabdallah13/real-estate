@@ -35,6 +35,6 @@ yarn-error.log*
 next-env.d.ts
 
 #vs code theme
-/.vscode
+/.vscode/
 
-.gitignore
+/.gitignore
