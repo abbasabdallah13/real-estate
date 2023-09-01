@@ -10,7 +10,7 @@ import Footer from '@/components/Footer'
 
 export const metaData = {
     title: 'Elite Estates',
-    description: 'Find the perfect house that suits your needs in the UAE'
+    description: 'Find the perfect house that suits your needs in the UAE',
 }
 
 export const Root = ({children}) => {
