@@ -40,10 +40,10 @@ const Navbar = () => {
     router.push('/')
   }
 
-  const emailLogin = localStorage?.getItem('email');
   useEffect(() => {
+    const emailLogin = localStorage?.getItem('email');
     getLoggedUser(emailLogin)
-  }, [emailLogin]);
+  }, []);
   
 
   return (
