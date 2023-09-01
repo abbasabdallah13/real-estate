@@ -12,6 +12,7 @@ import {
     Tooltip,
     Flex,
   } from "@chakra-ui/react";
+import { useEffect } from "react";
   
   const RangeSliderComponent = ({
     title,
@@ -21,10 +22,11 @@ import {
     setState,
     state,
     label,
-    width
+    width,
   }) => {
+
     return (
-      <div className="p-2 w-full sm:w-[25%] ">
+      <Box>
         <Text>{title}</Text>
         <RangeSlider
           defaultValue={defaultValue}
@@ -48,7 +50,7 @@ import {
             <RangeSliderThumb index={1} bg={'#000'} />
           </Tooltip>
         </RangeSlider>
-      </div>
+      </Box>
     );
   };
   

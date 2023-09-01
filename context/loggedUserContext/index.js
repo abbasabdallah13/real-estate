@@ -1,4 +1,4 @@
-import { useState, createContext, useEffect } from "react";
+import { useState, createContext } from "react";
 
 const LoggedUserContext = createContext();
 
@@ -8,13 +8,6 @@ export function LoggedUserProvider({children}) {
   const [registerError, setRegisterError] = useState('');
   const [loginError, setLoginError] = useState('');
   
-  
-  
-    function test(){
-      return 'test'
-    }
- 
-
     async function getLoggedUser(email){
       if(email){
         if(email.indexOf('@') !== -1){
@@ -136,7 +129,7 @@ export function LoggedUserProvider({children}) {
 
 
     return (
-        <LoggedUserContext.Provider value={{test, loggedUser, setLoggedUser, getLoggedUser, updateWishLists, deleteWishlist, savePost, unSavePost, loader, registerUser, loginUser, registerError, loginError, setRegisterError, setLoginError}}>
+        <LoggedUserContext.Provider value={{loggedUser, setLoggedUser, getLoggedUser, updateWishLists, deleteWishlist, savePost, unSavePost, loader, registerUser, loginUser, registerError, loginError, setRegisterError, setLoginError}}>
             { children }
         </LoggedUserContext.Provider>
     )

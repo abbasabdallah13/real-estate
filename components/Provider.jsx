@@ -4,6 +4,7 @@ import { SessionProvider } from "next-auth/react";
 import { ChakraProvider } from '@chakra-ui/react'
 import { LoggedUserProvider } from '@/context/loggedUserContext'
 import { ModalContextProvider } from "@/context/modalContext";
+import { GlobalVariablesProvider } from "@/context/globalVariablesContext";
 
 
 const Provider = ({children,session}) => {
@@ -12,7 +13,9 @@ const Provider = ({children,session}) => {
       <ChakraProvider>
         <LoggedUserProvider>
           <ModalContextProvider>
-            {children}
+            <GlobalVariablesProvider>
+              {children}
+            </GlobalVariablesProvider>
           </ModalContextProvider>
         </LoggedUserProvider>
       </ChakraProvider>

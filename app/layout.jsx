@@ -19,7 +19,7 @@ export const Root = ({children}) => {
             <body className='app'>
                 <Provider>
                     <div className='main'></div>
-                    <main className='app' id='main'  style={{ position:'relative' }}>
+                    <main className='app' id='main' style={{ position:'relative', minHeight: '100vh' }}>
                         <PopupModal />
                         <Navbar />
                         {children}

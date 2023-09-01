@@ -7,7 +7,7 @@ import TwitterIcon from '@/public/assets/icons/twitter.png';
 
 const Footer = () => {
   return (
-   <Flex direction='column' rowGap={'2'} bg={'#1D2641'}>
+   <Flex direction='column' position={'absolute'} bottom='-16vh' rowGap={'2'} bg={'#1D2641'} w='full' h='16vh' >
       <Flex justifyContent={'space-between'} p='6'>
         <Flex columnGap={'6'} color='white'>
           <Link href={"/search?purpose=for-rent"}>Rent</Link>

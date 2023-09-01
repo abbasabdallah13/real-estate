@@ -7,7 +7,7 @@ import { signOut } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import { CiLogout } from 'react-icons/ci'
 import { FcMenu, FcHome, FcAbout, FcBusinessman } from "react-icons/fc";
-import { BsSearch } from "react-icons/bs";
+import { BsFillSuitHeartFill, BsSearch } from "react-icons/bs";
 import { FiKey } from "react-icons/fi";
 import {
   Menu,
@@ -25,11 +25,13 @@ import {
 } from "@chakra-ui/react";
 import LoggedUserContext from "@/context/loggedUserContext";
 import modalContext from "@/context/modalContext";
+import GlobalVariablesContext from "@/context/globalVariablesContext";
 
 const Navbar = () => {
   const router = useRouter();
   const { loggedUser, setLoggedUser, getLoggedUser } = useContext(LoggedUserContext)
-  const { setOpenModal } = useContext(modalContext)   
+  const { setOpenModal } = useContext(modalContext)  
+  const { setSearch } = useContext(GlobalVariablesContext) 
 
   const signOutFunction = () => {
     signOut();
@@ -38,10 +40,10 @@ const Navbar = () => {
     router.push('/')
   }
 
-  const emailLogin = localStorage.getItem('email') || '';
+  const emailLogin = localStorage.getItem('email');
   useEffect(() => {
     getLoggedUser(emailLogin)
-  }, [loggedUser]);
+  }, [emailLogin]);
   
 
   return (
@@ -62,9 +64,10 @@ const Navbar = () => {
                   <MenuButton>
                       <Image src={loggedUser?.image} alt='user' width={40} height={40} style={{borderRadius:'50%', marginRight:'.5rem'}} />
                   </MenuButton>
-                  <MenuList>
+                  <MenuList zIndex={'100'}>
+                      <Text fontSize='sm' fontWeight={'semibold'} pl='1' borderBottom={'1px'}>{loggedUser?.name}</Text>
                       <MenuItem onClick={() => router.push('/wishlists')}>
-                          Wish Lists
+                         <BsFillSuitHeartFill /> &nbsp; Wish Lists
                       </MenuItem>
                       <MenuItem onClick={()=>{signOutFunction()}}>
                           <CiLogout /> &nbsp;
@@ -93,15 +96,13 @@ const Navbar = () => {
               variant="outline"
               colorScheme="blue"
             ></MenuButton>
-            <MenuList>
+            <MenuList zIndex={100}>
               <Link href="/">
                 <MenuItem icon={<FcHome />}>Home</MenuItem>
               </Link>
-              <Link href={"/search"}>
-                <MenuItem icon={<BsSearch />}>
-                  <Text>Search</Text>
-                </MenuItem>
-              </Link>
+              <MenuItem icon={<BsSearch />} onClick={() => setSearch(true)} >
+                <Text>Search</Text>
+              </MenuItem>
               <Link href={"/search?purpose=for-rent"}>
                 <MenuItem icon={<FcAbout />}>Rent</MenuItem>
               </Link>{" "}
@@ -125,16 +126,16 @@ const Navbar = () => {
               </Button>
             </Link>
 
-            <Link href={"/search"}>
               <Button
                 leftIcon={<BsSearch />}
                 aria-label="navigate to search page"
                 variant="link"
                 mr={4}
+                onClick={() => setSearch(true)}
               >
                 Search
               </Button>
-            </Link>
+
             <Link href={"/search?purpose=for-rent"}>
               <Button
                 leftIcon={<FcAbout />}
