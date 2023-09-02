@@ -13,6 +13,7 @@ const Saved = ({ property, id, session }) => {
    
 
     useEffect(() => {
+      console.log(loggedUser)
         if(loggedUser){
           loggedUser?.wishlists?.map(wishlist => {
             wishlist.properties.map(property => {
@@ -28,7 +29,7 @@ const Saved = ({ property, id, session }) => {
     <Box position={'absolute'} right={'1rem'} top={'.5rem'} zIndex={'5'} cursor='pointer'>
     {
       !saved ? (
-        <Flex alignItems='center' color='#353535' _hover={{color:'#F44336'}}  gap={'2px'} onClick={(e) => { e.stopPropagation(); !session?.user ? setOpenModal({type: 'login_register_modal', params:''}) : setOpenModal({type: 'wishlists_modal', params: { propertyId: id, property } })}}>
+        <Flex alignItems='center' color='#353535' _hover={{color:'#F44336'}}  gap={'2px'} onClick={(e) => { e.stopPropagation(); !Object.keys(loggedUser).length > 0 ? setOpenModal({type: 'login_register_modal', params:''}) : setOpenModal({type: 'wishlists_modal', params: { propertyId: id, property } })}}>
           <BsFillSuitHeartFill  fontSize={'4xl'}  />
         </Flex>
       ) : (

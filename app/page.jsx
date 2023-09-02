@@ -113,6 +113,14 @@ const Home = () => {
   }, [session]);
 
   useEffect(() => {
+    const emailLogin = localStorage?.getItem('email');
+    if(emailLogin){
+      getLoggedUser(emailLogin);
+    }
+  }, []);
+  
+
+  useEffect(() => {
     window.addEventListener('scroll', () => {
       if(window.scrollY > 900){
         setShowJumpToTop(true)

@@ -34,7 +34,7 @@ const Wishlist = ({wishlist, i, router}) => {
     
 
   return (
-    <Box key={i} w={{md:'15rem'}} h={{md:'15rem'}} cursor={'pointer'} position='relative'  onClick={()=>router.push(`/wishlists/${wishlist.name}`)}>
+    <Box key={i} w={{md:'15rem'}} h={{md:'15rem'}} cursor={'pointer'} position='relative' _hover={{transform: 'scale(1.05)'}} className="transition-100" onClick={()=>router.push(`/wishlists/${wishlist.name}`)}>
         <Box position='absolute' right='10px' top='10px' borderRadius={'50%'} backgroundColor={'#dedede'} display='flex' justifyContent={'center'} alignItems={'center'} p='2px' zIndex='10' color='red' cursor='pointer' _hover={{color:'white', backgroundColor:'black'}} onClick={(e) => { e.stopPropagation(); setOpenModal({type: 'delete_wishlist_modal', params: { wishlistName: wishlist.name }}) } }>
             <IoMdTrash />
         </Box>

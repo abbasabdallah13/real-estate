@@ -69,3 +69,7 @@
     background-color: #d2d2e3;
     border: none;
 }
+
+.transition-100{
+    transition: .1s;
+}
